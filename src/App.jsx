@@ -12,6 +12,7 @@ import LandingPage from "./pages/LandingPage";
 // Components
 import LoginForm from "./components/forms/LoginForm";
 import AuthPage from "./pages/AuthPage";
+import HomePage from "./pages/HomePage";
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -20,6 +21,7 @@ function App() {
         <Route path="auth/login" element={<AuthPage />}>
           <Route index element={<LoginForm />} />
         </Route>
+        <Route path="home" element={<HomePage />} />
       </Route>
     )
   );
