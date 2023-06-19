@@ -21,7 +21,7 @@ function Modal({ isVisible, onClose, children }) {
           >
             X
           </button>
-          <div className="bg-white p-2 rounded">{children}</div>
+          <div className=" bg-gray-300 p-2 rounded-lg">{children}</div>
         </div>
       </div>
     </>
