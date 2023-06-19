@@ -1,7 +1,6 @@
 import { Dialog } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
 const navigation = [
   { name: "Home", href: "#" },
   { name: "Features", href: "#" },
@@ -54,19 +53,21 @@ const Navbar = () => {
           </div>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end gap-2">
             <a
-              href="auth/login"
+              href="/auth/login"
               className="text-sm font-semibold leading-6 text-gray-900 p-2 rounded-lg "
               style={{ background: "#5e9ba1" }}
             >
               Log in
             </a>
             <a
-              href="#"
+              href="/auth/signup"
               className="text-sm font-semibold leading-6 text-gray-900 border p-2 rounded-lg"
               style={{ borderColor: "#5e9ba1" }}
             >
               Sign up
             </a>
+
+            <div className="username">username</div>
           </div>
         </nav>
         <Dialog
@@ -110,13 +111,14 @@ const Navbar = () => {
                 </div>
                 <div className="py-6">
                   <a
-                    href="#"
+                    href="/auth/login"
                     className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                   >
                     Log in
                   </a>
+
                   <a
-                    href="#"
+                    href="/auth/signup"
                     className="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                   >
                     sign up
