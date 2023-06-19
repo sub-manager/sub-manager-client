@@ -24,8 +24,10 @@ const Navbar = () => {
               <span className="sr-only">Your Company</span>
               <img
                 className="h-8 w-auto"
-                src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                // src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
+                src="../../public/images/logo.png"
                 alt=""
+                style={{ height: "2em", width: "8em" }}
               />
             </a>
           </div>
@@ -53,13 +55,15 @@ const Navbar = () => {
           <div className="hidden lg:flex lg:flex-1 lg:justify-end gap-2">
             <a
               href="auth/login"
-              className="text-sm font-semibold leading-6 text-gray-900 p-2 rounded-lg bg-red-500"
+              className="text-sm font-semibold leading-6 text-gray-900 p-2 rounded-lg "
+              style={{ background: "#5e9ba1" }}
             >
               Log in
             </a>
             <a
               href="#"
-              className="text-sm font-semibold leading-6 text-gray-900 border border-red-500 p-2 rounded-lg"
+              className="text-sm font-semibold leading-6 text-gray-900 border p-2 rounded-lg"
+              style={{ borderColor: "#5e9ba1" }}
             >
               Sign up
             </a>
