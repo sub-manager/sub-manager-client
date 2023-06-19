@@ -1,18 +1,28 @@
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
 import Modal from "../components/forms/Modal";
-import { BsFolderPlus } from "react-icons/bs";
-import { BsFolder } from "react-icons/bs";
+import { BsFolderPlus, BsFolder } from "react-icons/bs";
 import { MdAddCircleOutline } from "react-icons/md";
-import { RiEditBoxFill } from "react-icons/ri";
-import { TiDelete } from "react-icons/ti";
-import { FaVrCardboard } from "react-icons/fa";
-import { BsCalendar2DateFill } from "react-icons/bs";
 
-import { useActionData } from "react-router-dom";
-
+import Axios from "axios";
+import Subscription from "../components/Subscription";
+import SubscriptionForm from "../components/forms/SubscriptionForm";
 const HomePage = () => {
+  const [data, setData] = useState([]);
+  // const [newSub, setNewSub] = useState({});
+
+  //
   const [showModal, setShowModal] = useState(false);
   const [showSubFormModal, setShowSubFormModal] = useState(false);
+
+  //
+  const getSubs = async () => {
+    Axios.get("http://localhost:8800/api/post/subs").then((res) => {
+      setData(res.data);
+    });
+  };
+  useEffect(() => {
+    getSubs();
+  }, []);
   return (
     <>
       <div className="grid lg:grid-cols-3 xl:cols-2 gap h-screen mt-20 p-20">
@@ -106,87 +116,13 @@ const HomePage = () => {
                 </div>
               </div>
             </div>
-            <div className="w-full h-20 bg-[#f9f7f3]">
-              <div className="grid grid-cols-6 p-4">
-                <div>
-                  <div className="w-20 h-32 rounded-md">
-                    <img
-                      src="https://variety.com/wp-content/uploads/2019/02/netflix-logo-originals.jpg?w=640"
-                      className="w- h-15 rounded-lg"
-                    />
-                  </div>
-                </div>
-                <div className="font mt-3 text-center">
-                  <h1>Netflix</h1>
-                </div>
-                <div className="font content text-center">
-                  <h1>Renews</h1>
-                  <h1>16 Jul, 2023</h1>
-                </div>
-                <div className="font mt-3 text-center">
-                  <h1>Monthly</h1>
-                </div>
-                <div className="font content text-center">
-                  <h1>Price</h1>
-                  <h1>0.00 SR</h1>
-                </div>
-                <div className="font mt-3 text-center">
-                  <div className="flex gap-4">
-                    <div>
-                      <button>
-                        <RiEditBoxFill size={"30"} color="#5e9ba1" />
-                      </button>
-                    </div>
-                    <div>
-                      <button>
-                        <TiDelete size={"30"} color="#ef4444" />
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="w-full h-20 bg-[#f9f7f3]">
-              <div className="grid grid-cols-6 p-4">
-                <div>
-                  <div className="w-20 h-32 rounded-md">
-                    <img
-                      src="https://images.squarespace-cdn.com/content/v1/6042529f1fe38f0b0503be5c/1616072527567-YHOUT1L2JW6ROBTME3SQ/spotify-playlist.jpeg"
-                      className="w- h-15 rounded-lg"
-                    />
-                  </div>
-                </div>
-                <div className="font mt-3 text-center">
-                  <h1>Spotify</h1>
-                </div>
-                <div className="font content text-center">
-                  <h1>Renews</h1>
-                  <h1>16 Jul, 2023</h1>
-                </div>
-                <div className="font mt-3 text-center">
-                  <h1>Monthly</h1>
-                </div>
-                <div className="font content text-center">
-                  <h1>Price</h1>
-                  <h1>0.00 SR</h1>
-                </div>
-                <div className="font mt-3 text-center">
-                  <div className="flex gap-4">
-                    <div>
-                      <button>
-                        <RiEditBoxFill size={"30"} color="#5e9ba1" />
-                      </button>
-                    </div>
-                    <div>
-                      <button>
-                        <TiDelete size={"30"} color="#ef4444" />
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {data.map((sub) => (
+              <Subscription
+                key={sub.id}
+                provider={sub.providerName}
+                date={sub.date}
+              />
+            ))}
           </div>
         </div>
 
@@ -233,100 +169,12 @@ const HomePage = () => {
               <p className="text-center text-sm text-gray-500 font-bold">
                 Create New Subscription
               </p>
-              <form className="mt-6">
-                <div className="relative mb-4">
-                  <input
-                    className="appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition  rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline"
-                    id="username"
-                    type="text"
-                    placeholder="Provider Name"
-                  />
-                  <div className="absolute left-0 inset-y-0 flex items-center">
-                    <FaVrCardboard className="h-7 w-7 ml-3 text-gray-400 p-1" />
-                  </div>
-                </div>
-
-                <div className="relative">
-                  <input
-                    className="appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition  rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline"
-                    id="username"
-                    type="date"
-                    placeholder="dd-mm-yyyy"
-                  />
-                  <div className="absolute left-0 inset-y-0 flex items-center">
-                    <BsCalendar2DateFill className="h-7 w-7 ml-3 text-gray-400 p-1" />
-                  </div>
-                </div>
-
-                <div className="flex gap-4 items-center">
-                  <div className="mt-2 flex gap-4 items-center">
-                    <label className="block mb-2 text-sm font-medium text-[#232323] ">
-                      Cycle
-                    </label>
-                    <select
-                      id="countries"
-                      className="bg-gray-50 border border-gray-300 text-[#232323] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white dark:border-gray-600 dark:placeholder-[#232323] dark:text-[#232323] dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    >
-                      <option value="weekly" selected>
-                        Weekly
-                      </option>
-                      <option value="monthly">Monthly</option>
-                      <option value="yearly">Yearly</option>
-                    </select>
-                  </div>
-                  {/* RADIO */}
-                  <div className="mt-2 flex gap-4 items-center">
-                    <label className="block mb-2 text-sm font-medium text-[#232323] ">
-                      renewable
-                    </label>
-                    <select className="bg-gray-50 border border-gray-300 text-[#232323] text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white dark:border-gray-600 dark:placeholder-[#232323] dark:text-[#232323] dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                      <option value="yes" selected>
-                        yes
-                      </option>
-                      <option value="no">no</option>
-                    </select>
-                  </div>
-                </div>
-                {/* <div className="mt-2">
-                  <label className="w-full py-4 ml-2 text-sm font-medium text-black">
-                    Renewal automatically
-                  </label>
-                </div>
-                <div className="mt-4">
-                  <div className="flex items-center pl-4 mb-2 border border-gray-200 rounded dark:border-gray-700">
-                    <input
-                      id="bordered-radio-1"
-                      type="radio"
-                      value=""
-                      name="bordered-radio"
-                      className="w-4 h-4  text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                    />
-                    <label className="w-full py-4 ml-2 text-sm font-medium text-black">
-                      Yes
-                    </label>
-                  </div>
-                  <div className="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700">
-                    <input
-                      checked
-                      id="bordered-radio-2"
-                      type="radio"
-                      value=""
-                      name="bordered-radio"
-                      className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-                    />
-                    <label className="w-full py-4 ml-2 text-sm font-medium text-black">
-                      No
-                    </label>
-                  </div>
-                </div> */}
-                {/* END RADIO */}
-
-                <div className="flex items-center justify-center mt-8">
-                  <button className="text-white py-2 px-4 uppercase rounded bg-[#5e9ba1] hover:bg-black shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
-                    Add Subscription
-                  </button>
-                </div>
-              </form>
+              {/* form here */}
+              <SubscriptionForm
+                onChange={() => {}}
+                // onChange={() => {}}
+                onClick={() => {}}
+              />
             </div>
           </div>
         </div>
