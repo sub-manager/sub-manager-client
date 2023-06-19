@@ -1,6 +1,35 @@
-import { BsGithub, BsGoogle } from "react-icons/bs";
+import Axios from "axios";
+import { useEffect, useState } from "react";
+// import { BsGithub, BsGoogle } from "react-icons/bs";
+import { useNavigate } from "react-router";
+import { useCookies } from "react-cookie";
 
 const LoginForm = () => {
+  const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [pwd, setPwd] = useState("");
+  const [cookie, setCookie] = useCookies("");
+
+  const handleLogin = async () => {
+    await Axios.post("http://localhost:8800/api/user/signin", {
+      email: email,
+      password: pwd,
+    })
+      .then((res) => {
+        console.log(`current user: ${res}`);
+        console.log(res.data.token);
+        setCookie("token", res.data.token);
+        navigate("/home");
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
+
+  useEffect(() => {
+    handleLogin();
+  });
+
   return (
     <>
       <div className="w-full max-w-md p-4 rounded-md shadow sm:p-8 dark:bg-gray-900 dark:text-gray-100 ">
@@ -13,49 +42,28 @@ const LoginForm = () => {
             Sign up here
           </a>
         </p>
-        <div className="my-6 space-y-4">
-          <button
-            aria-label="Login with Google"
-            type="button"
-            className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ri focus:ri dark:border-gray-400 focus:ri"
-          >
-            <BsGoogle className="w-5 h-5" />
-            <p>Login with Google</p>
-          </button>
-          <button
-            aria-label="Login with GitHub"
-            role="button"
-            className="flex items-center justify-center w-full p-4 space-x-4 border rounded-md focus:ri focus:ri dark:border-gray-400 focus:ri"
-          >
-            <BsGithub className="w-5 h-5" />
-
-            <p>Login with GitHub</p>
-          </button>
-        </div>
+        <div className="my-6 space-y-4"></div>
         <div className="flex items-center w-full my-4">
           <hr className="w-full dark:text-gray-400" />
           <p className="px-3 dark:text-gray-400">OR</p>
           <hr className="w-full dark:text-gray-400" />
         </div>
-        <form noValidate="" className="space-y-8">
+        <form onSubmit={handleLogin} className="space-y-8">
           <div className="space-y-4">
             <div className="space-y-2">
-              <label htmlFor="email" className="block text-sm">
-                Email
-              </label>
+              <label className="block text-sm">Email</label>
               <input
+                className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"
                 type="email"
                 name="email"
                 id="email"
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="leroy@jenkins.com"
-                className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"
               />
             </div>
             <div className="space-y-2">
               <div className="flex justify-between">
-                <label htmlFor="password" className="text-sm">
-                  Password
-                </label>
+                <label className="text-sm">Password</label>
                 <a
                   rel="noopener noreferrer"
                   href="#"
@@ -65,11 +73,12 @@ const LoginForm = () => {
                 </a>
               </div>
               <input
+                className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"
                 type="password"
                 name="password"
                 id="password"
+                onChange={(e) => setPwd(e.target.value)}
                 placeholder="*****"
-                className="w-full px-3 py-2 border rounded-md dark:border-gray-700 dark:bg-gray-900 dark:text-gray-100 focus:dark:border-violet-400"
               />
             </div>
           </div>
