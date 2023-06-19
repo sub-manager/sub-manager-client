@@ -18,6 +18,7 @@ const SubscriptionForm = () => {
     e.preventDefault();
     console.log(provider, date);
   };
+
   return (
     <>
       <form className="mt-6" onSubmit={handleSubmit}>
@@ -45,6 +46,20 @@ const SubscriptionForm = () => {
           />
           <div className="absolute left-0 inset-y-0 flex items-center">
             <BsCalendar2DateFill className="h-7 w-7 ml-3 text-gray-400 p-1" />
+          </div>
+        </div>
+
+        <div className="relative mb-4 mt-4">
+          <input
+            className="appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition  rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline"
+            id="username"
+            name="Price"
+            type="text"
+            placeholder="Price"
+            onChange={props.onChange}
+          />
+          <div className="absolute left-0 inset-y-0 flex items-center">
+            <MdPriceChange className="h-7 w-7 ml-3 text-gray-400 p-1" />
           </div>
         </div>
 
