@@ -15,7 +15,7 @@ const PricingPlans = () => {
                   <h2 className="px-2 text-lg font-medium">Starter</h2>
                   <p className="mb-3">
                     <span className="text-2xl font-bold sm:text-4xl dark:text-gray-50">
-                      0€
+                      Free
                     </span>
                     <span className="font-medium dark:text-gray-400">/mo</span>
                   </p>
@@ -24,7 +24,7 @@ const PricingPlans = () => {
                   <h2 className="px-2 text-lg font-medium">Standard</h2>
                   <p className="mb-3">
                     <span className="text-2xl font-bold sm:text-4xl dark:text-gray-50">
-                      19€
+                      19 SR
                     </span>
                     <span className="font-medium dark:text-gray-400">/mo</span>
                   </p>
@@ -33,7 +33,7 @@ const PricingPlans = () => {
                   <h2 className="px-2 text-lg font-medium">Premium</h2>
                   <p className="mb-3">
                     <span className="text-2xl font-bold sm:text-4xl dark:text-gray-50">
-                      49€
+                      49 SR
                     </span>
                     <span className="font-medium dark:text-gray-400">/mo</span>
                   </p>
