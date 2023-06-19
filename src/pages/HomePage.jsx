@@ -8,7 +8,6 @@ import Subscription from "../components/Subscription";
 import SubscriptionForm from "../components/forms/SubscriptionForm";
 const HomePage = () => {
   const [data, setData] = useState([]);
-  // const [newSub, setNewSub] = useState({});
 
   //
   const [showModal, setShowModal] = useState(false);
@@ -16,13 +15,18 @@ const HomePage = () => {
 
   //
   const getSubs = async () => {
-    Axios.get("http://localhost:8800/api/post/subs").then((res) => {
-      setData(res.data);
+    await Axios.get("http://localhost:8800/api/post/subscriptions", {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    }).then((res) => {
+      setData(res.data.subscription);
     });
   };
   useEffect(() => {
     getSubs();
   }, []);
+
   const [showUbdataSubForm, setShowUbdataSubForm] = useState(false);
   const [showDeleteSubAlert, setShowDeleteSubAlert] = useState(false);
 
