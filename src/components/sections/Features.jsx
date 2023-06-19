@@ -116,7 +116,7 @@ const Features = () => {
             </div>
             <div aria-hidden="true" className="mt-10 lg:mt-0">
               <img
-                src="https://source.unsplash.com/random/360x480"
+                src="https://thehill.com/wp-content/uploads/sites/2/2019/08/tampingdown_socialmedia_082418istock.jpg?w=1280"
                 alt=""
                 className="mx-auto rounded-lg shadow-lg dark:bg-gray-500"
               />
@@ -228,7 +228,7 @@ const Features = () => {
               </div>
               <div className="mt-10 lg:mt-0 lg:col-start-1 lg:row-start-1">
                 <img
-                  src="https://source.unsplash.com/random/361x481"
+                  src="https://uploads-ssl.webflow.com/5e7783f66312835b392f3113/5e7783f663128372ad2f3180_5d63c888a93ad9c0c7d5a5df_Group%202972.png"
                   alt=""
                   className="mx-auto rounded-lg shadow-lg dark:bg-gray-500"
                 />
