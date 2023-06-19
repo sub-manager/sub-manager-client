@@ -3,7 +3,6 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
 import Auth from "../Decode";
 import Logo from "./Logo";
-import { Calendar } from "@fullcalendar/core";
 import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
