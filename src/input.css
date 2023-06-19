@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-.section {
-  min-height: 100vh;
+/* GOOGLE FONT */
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap");
+
+.font {
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: bold;
 }
