@@ -3,9 +3,15 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
 import Auth from "../Decode";
 import Logo from "./Logo";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = () => {const navigate = useNavigate()
+
+
+  const handleLogout = ()=>{
+    localStorage.clear();
+    navigate('/auth/login')
+  }
   const navigation = [
     { name: "Home", href: "#" },
     { name: "Features", href: "#" },
@@ -52,7 +58,7 @@ const Navbar = () => {
                 className="text-sm font-semibold leading-6 text-gray-900 p-2 rounded-lg "
                 style={{ background: "#5e9ba1" }}
               >
-                logout
+                <button onClick={handleLogout}>logout</button>
               </a>
             ) : (
               <a
@@ -123,7 +129,7 @@ const Navbar = () => {
                       className="text-sm font-semibold leading-6 text-gray-900 p-2 rounded-lg "
                       style={{ background: "#5e9ba1" }}
                     >
-                      logout
+                      <button onClick={handleLogout}>logout</button>
                     </a>
                   ) : (
                     <a
