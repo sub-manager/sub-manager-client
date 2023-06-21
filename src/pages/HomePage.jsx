@@ -3,19 +3,22 @@ import Modal from "../components/forms/Modal";
 import { BsFolderPlus, BsFolder } from "react-icons/bs";
 import { MdAddCircleOutline } from "react-icons/md";
 
-import Axios from "axios";
 import Subscription from "../components/Subscription";
 import SubscriptionForm from "../components/forms/SubscriptionForm";
+import axios from "axios";
 const HomePage = () => {
   const [data, setData] = useState([]);
 
   //
   const [showModal, setShowModal] = useState(false);
   const [showSubFormModal, setShowSubFormModal] = useState(false);
+  const [showUbdateSubForm, setShowUbdateSubForm] = useState(false);
+
+  const [createCategory, setCreateCategory] = useState("");
 
   //
   const getSubs = async () => {
-    await Axios.get("http://localhost:8800/api/post/subscriptions", {
+    await axios.get("http://localhost:8800/api/post/subscriptions", {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
@@ -27,7 +30,13 @@ const HomePage = () => {
     getSubs();
   }, []);
 
-  const [showUbdataSubForm, setShowUbdataSubForm] = useState(false);
+  const addCategory = async () => {
+    await axios.post("http//:localhost:8800/api/post/add", {
+      providerName: createCategory,
+    });
+  };
+
+  // const [showUbdataSubForm, setShowUbdataSubForm] = useState(false);
   const [showDeleteSubAlert, setShowDeleteSubAlert] = useState(false);
 
   return (
@@ -45,7 +54,7 @@ const HomePage = () => {
                   onClick={() => setShowModal(true)}
                   className="font w-full py-2 text-lg text-[#232323]"
                 >
-                  Add Folder
+                  Add Category
                 </button>
               </div>
             </div>
@@ -149,6 +158,7 @@ const HomePage = () => {
                       id="username"
                       type="text"
                       placeholder="Folder Name"
+                      onChange={(e) => setCreateCategory(e.target.value)}
                     />
                     <div className="absolute left-0 inset-y-0 flex items-center">
                       <BsFolderPlus className="h-7 w-7 ml-3 text-gray-400 p-1" />
@@ -156,7 +166,10 @@ const HomePage = () => {
                   </div>
 
                   <div className="flex items-center justify-center mt-8">
-                    <button className="text-white py-2 px-4 uppercase rounded bg-[#5e9ba1] hover:bg-black shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5">
+                    <button
+                      onClick={addCategory}
+                      className="text-white py-2 px-4 uppercase rounded bg-[#5e9ba1] hover:bg-black shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5"
+                    >
                       New Folder
                     </button>
                   </div>
@@ -185,8 +198,8 @@ const HomePage = () => {
       </Modal>
       {/* Modal of update subscription information */}
       <Modal
-        isVisible={showUbdataSubForm}
-        onClose={() => setShowUbdataSubForm(false)}
+        isVisible={showUbdateSubForm}
+        onClose={() => setShowUbdateSubForm(false)}
       >
         <div className="bg-gray-300">
           <div className="p-8 lg:w-full mx-auto">

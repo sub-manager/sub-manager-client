@@ -1,5 +1,6 @@
 import { RiEditBoxFill } from "react-icons/ri";
 import { TiDelete } from "react-icons/ti";
+import propTypes from "prop-types";
 const Subscription = (props) => {
   return (
     <>
@@ -25,7 +26,7 @@ const Subscription = (props) => {
           </div>
           <div className="font content text-center">
             <h1>Price</h1>
-            <h1>0.00 SR</h1>
+            <h1>{props.price} </h1>
           </div>
           <div className="font mt-3 text-center">
             <div className="flex gap-4">
@@ -47,4 +48,10 @@ const Subscription = (props) => {
   );
 };
 
+Subscription.propTypes = {
+  provider: propTypes.string,
+  date: propTypes.string,
+  cycle: propTypes.string,
+  price: propTypes.string,
+};
 export default Subscription;
