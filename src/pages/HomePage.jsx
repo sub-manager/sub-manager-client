@@ -13,6 +13,7 @@ const HomePage = () => {
   const [showModal, setShowModal] = useState(false);
   const [showSubFormModal, setShowSubFormModal] = useState(false);
   const [showUbdateSubForm, setShowUbdateSubForm] = useState(false);
+  const [showEntertainmentCate, setShowEntertainmentCate] = useState(false)
 
   const [createCategory, setCreateCategory] = useState("");
 
@@ -142,7 +143,30 @@ const HomePage = () => {
             ))}
           </div>
         </div>
-
+        {/* ENTERTAINMENT CATEGORY INFORMATION */}
+        <Modal isVisible={showModal} onClose={() => setShowModal(false)}>
+          <div className="">
+            <div className="p-8 lg:w-full mx-auto">
+              <div className="bg-gray-300 rounded-b-lg py-12 px-4 lg:px-24">
+                <p className="text-center text-sm text-gray-500 font-bold">
+                  Entertainment Category
+                </p>
+                  <div className="relative">
+                    <input
+                      className="appearance-none border pl-12 border-gray-100 shadow-sm focus:shadow-md focus:placeholder-gray-600  transition  rounded-md w-full py-3 text-gray-600 leading-tight focus:outline-none focus:ring-gray-600 focus:shadow-outline"
+                      id="username"
+                      type="text"
+                      placeholder="Folder Name"
+                      onChange={(e) => setCreateCategory(e.target.value)}
+                    />
+                    <div className="absolute left-0 inset-y-0 flex items-center">
+                      <BsFolderPlus className="h-7 w-7 ml-3 text-gray-400 p-1" />
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </Modal>
         {/* MODAL OF CREATE FOLDER */}
         <Modal isVisible={showModal} onClose={() => setShowModal(false)}>
           <div className="">
