@@ -3,7 +3,7 @@ import propTypes from "prop-types";
 const InputField = (props) => {
   return (
     <div className="space-y-2">
-      <label htmlFor="phone" className="block text-sm">
+      <label className="block text-sm">
         {props.label}
       </label>
       <input

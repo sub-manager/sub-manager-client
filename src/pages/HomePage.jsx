@@ -14,25 +14,36 @@ const HomePage = () => {
   const [showSubFormModal, setShowSubFormModal] = useState(false);
   const [showUbdateSubForm, setShowUbdateSubForm] = useState(false);
 
-  const [createCategory, setCreateCategory] = useState("");
+  // const [createCategory, setCreateCategory] = useState("");
 
+  // const [subscription, setSubscription] = useState({
+  //   providerName: "",
+  //   value: "",
+  //   date: "",
+  //   category: "",
+  //   renewable: false,
+  //   cycle: "",
+  // });
   //
   const getSubs = async () => {
-    await axios.get("http://localhost:8800/api/post/subscriptions", {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-    }).then((res) => {
-      setData(res.data.subscription);
-    });
+    await axios
+      .get("http://localhost:8800/api/post/subscriptions", {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      .then((res) => {
+        setData(res.data.subscription);
+      });
   };
   useEffect(() => {
     getSubs();
   }, []);
 
-  const addCategory = async () => {
+  const addCategory = async (e) => {
+    e.preventDefault();
     await axios.post("http//:localhost:8800/api/post/add", {
-      providerName: createCategory,
+      // ...subscription,
     });
   };
 
@@ -158,7 +169,7 @@ const HomePage = () => {
                       id="username"
                       type="text"
                       placeholder="Folder Name"
-                      onChange={(e) => setCreateCategory(e.target.value)}
+                      // onChange={(e) => setCreateCategory(e.target.value)}
                     />
                     <div className="absolute left-0 inset-y-0 flex items-center">
                       <BsFolderPlus className="h-7 w-7 ml-3 text-gray-400 p-1" />
