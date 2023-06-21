@@ -8,23 +8,31 @@ import SubscriptionForm from "../components/forms/SubscriptionForm";
 import axios from "axios";
 const HomePage = () => {
   const [data, setData] = useState([]);
+  // Data Of Entertainment Category 
+  const [entertainmentData, setEntertainmentData] = useState([])
+  const [sportData, setSportData] = useState([])
+
 
   //
   const [showModal, setShowModal] = useState(false);
   const [showSubFormModal, setShowSubFormModal] = useState(false);
   const [showUbdateSubForm, setShowUbdateSubForm] = useState(false);
+  const [showEntertainmentCate, setEntertainmentCate] = useState(false)
+  const [showSportCate, setSportCate] = useState(false)
 
-  // const [createCategory, setCreateCategory] = useState("");
 
-  // const [subscription, setSubscription] = useState({
-  //   providerName: "",
-  //   value: "",
-  //   date: "",
-  //   category: "",
-  //   renewable: false,
-  //   cycle: "",
-  // });
-  //
+  const [createCategory, setCreateCategory] = useState("");
+
+  TO GET SUBSCRIPTION
+  const [subscription, setSubscription] = useState({
+    providerName: "",
+    value: "",
+    date: "",
+    category: "",
+    renewable: false,
+    cycle: "",
+  });
+  
   const getSubs = async () => {
     await axios
       .get("http://localhost:8800/api/post/subscriptions", {
@@ -39,6 +47,28 @@ const HomePage = () => {
   useEffect(() => {
     getSubs();
   }, []);
+
+  useEffect(() => {
+    axios.get("http://localhost:8800/api/user/category/allCategory", {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    }).then((res) => {
+      setEntertainmentData(res.data)
+    })
+  },[])
+
+  useEffect(() => {
+    axios.get("http://localhost:8800/api/user/category/sportCategory", {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    }).then((res) => {
+      setSportData(res.data)
+    })
+  },[])
+
+  const addCategory = async () => {
 
   const addCategory = async (e) => {
     e.preventDefault();
@@ -78,7 +108,7 @@ const HomePage = () => {
                 <BsFolder size={"32"} />
               </div>
               <div className="w-full">
-                <button className="font w-full py-2 text-lg text-[#232323]">
+                <button onClick={() => setEntertainmentCate(true)} className="font w-full py-2 text-lg text-[#232323]">
                   Entertainment
                 </button>
               </div>
@@ -91,7 +121,7 @@ const HomePage = () => {
                 <BsFolder size={"32"} />
               </div>
               <div className="w-full">
-                <button className="font w-full py-2 text-lg text-[#232323]">
+                <button onClick={() => setSportCate(true)} className="font w-full py-2 text-lg text-[#232323]">
                   Sport
                 </button>
               </div>
@@ -153,7 +183,70 @@ const HomePage = () => {
             ))}
           </div>
         </div>
+        {/* SHOW SUBSCRIPTIONS OF USER IN ENTERTAINMENT FOLDER */}
+        <Modal isVisible={showEntertainmentCate} onClose={() => setEntertainmentCate(false)}>
+          <div className="">
+            <div className="p-8 lg:w-full mx-auto">
+              <div className="bg-gray-300 rounded-b-lg py-12 px-4 lg:px-24">
+                <p className="text-center text-sm text-gray-500 font-bold">
+                  Entertainment Category
+                </p>
 
+                {
+                  entertainmentData.map((item) => {
+                    return(
+                      <ul key={item.id}>
+                        <li key={item.id}>
+                        <h1>{item.provider_name}</h1>
+                        <h1>{item.subscription_date}</h1>
+                        <h1>{item.subscription_value}</h1>
+                        <h1>{item.subscription_cycle}</h1>
+
+                        <hr />
+
+                        </li>
+                      </ul>
+                      
+                    )
+                    
+                  })
+                }
+              </div>
+            </div>
+          </div>
+        </Modal>
+
+         {/* SHOW SUBSCRIPTIONS OF USER IN SPORT FOLDER */}
+         <Modal isVisible={showSportCate} onClose={() => setSportCate(false)}>
+          <div className="">
+            <div className="p-8 lg:w-full mx-auto">
+              <div className="bg-gray-300 rounded-b-lg py-12 px-4 lg:px-24">
+                <p className="text-center text-sm text-gray-500 font-bold">
+                  Sport Category
+                </p>
+
+                {
+                  sportData.map((item) => {
+                    return(
+                      <ul key={item.id}>
+                        <li key={item.id}>
+                        <h1>{item.provider_name}</h1>
+                        <h1>{item.subscription_date}</h1>
+                        <h1>{item.subscription_value}</h1>
+                        <h1>{item.subscription_cycle}</h1>
+
+                        <hr className='bg-black'/>
+
+                        </li>
+                      </ul>                      
+                    )                   
+                  })
+                }
+                
+              </div>
+            </div>
+          </div>
+        </Modal>
         {/* MODAL OF CREATE FOLDER */}
         <Modal isVisible={showModal} onClose={() => setShowModal(false)}>
           <div className="">
@@ -178,7 +271,7 @@ const HomePage = () => {
 
                   <div className="flex items-center justify-center mt-8">
                     <button
-                      onClick={addCategory}
+                      onClick={()=>addCategory}
                       className="text-white py-2 px-4 uppercase rounded bg-[#5e9ba1] hover:bg-black shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5"
                     >
                       New Folder
