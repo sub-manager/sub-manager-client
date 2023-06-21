@@ -19,4 +19,5 @@ SubscriptionInputField.propTypes = {
   placeHolder: propTypes.string,
   onChange: propTypes.func,
 };
+
 export default SubscriptionInputField;
