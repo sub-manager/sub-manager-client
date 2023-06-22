@@ -4,8 +4,11 @@ import { useState } from "react";
 import Auth from "../Decode";
 import Logo from "./Logo";
 import { NavLink, useNavigate } from "react-router-dom";
+// import UserAvatar from "./Avatar";
 
-const Navbar = () => {const navigate = useNavigate()
+const Navbar = () => {
+const navigate = useNavigate()
+
 
 
   const handleLogout = ()=>{
@@ -20,16 +23,20 @@ const Navbar = () => {const navigate = useNavigate()
   ];
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+
+  
+
+
   return (
     <>
-      <header className="absolute inset-x-0 top-0 z-50">
+      <header className="absolute  inset-x-0 top-0 z-40">
         <nav
-          className="flex items-center justify-between p-6 lg:px-8"
+          className="flex items-center justify-between p-6 lg:px-8 "
           aria-label="Global"
         >
-          <div className="flex lg:flex-1">
+         
             <Logo />
-          </div>
+        
           <div className="flex lg:hidden">
             <button
               type="button"
@@ -40,6 +47,7 @@ const Navbar = () => {const navigate = useNavigate()
               <Bars3Icon className="h-6 w-6" aria-hidden="true" />
             </button>
           </div>
+      
           <div className="hidden lg:flex lg:gap-x-12">
             {navigation.map((item) => (
               <a
@@ -49,7 +57,14 @@ const Navbar = () => {const navigate = useNavigate()
               >
                 {item.name}
               </a>
+              
             ))}
+            
+            {
+              Auth.decode() ? <NavLink to={"/calender"}>calender</NavLink> : ''
+            }
+            
+
           </div>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end gap-2">
             {Auth.isLogged ? (
@@ -58,7 +73,8 @@ const Navbar = () => {const navigate = useNavigate()
                 className="text-sm font-semibold leading-6 text-gray-900 p-2 rounded-lg "
                 style={{ background: "#5e9ba1" }}
               >
-                <button onClick={handleLogout}>logout</button>
+                      <button onClick={handleLogout}>logout</button>
+
               </a>
             ) : (
               <a
@@ -82,8 +98,8 @@ const Navbar = () => {const navigate = useNavigate()
               </a>
             )}
 
-            <NavLink to={"/calender"}>calender</NavLink>
-            <div className="username">
+            <div className="flex items-center">
+              {/* <UserAvatar/> */}
               {Auth.decode()?.user?.username || ""}
             </div>
           </div>
@@ -109,9 +125,9 @@ const Navbar = () => {const navigate = useNavigate()
               </button>
             </div>
             {/* nav */}
-            <div className="mt-6 flow-root">
+            <div className="mt-6 flow-root ">
               <div className="-my-6 divide-y divide-gray-500/10">
-                <div className="space-y-2 py-6">
+                <div className="space-y-2 py-6 " >
                   {navigation.map((item) => (
                     <a
                       key={item.name}
