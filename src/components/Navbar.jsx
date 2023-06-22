@@ -10,6 +10,7 @@ const Navbar = () => {
 const navigate = useNavigate()
 
 
+
   const handleLogout = ()=>{
     localStorage.clear();
     navigate('/auth/login')
@@ -73,6 +74,7 @@ const navigate = useNavigate()
                 style={{ background: "#5e9ba1" }}
               >
                       <button onClick={handleLogout}>logout</button>
+
               </a>
             ) : (
               <a

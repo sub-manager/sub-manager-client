@@ -13,14 +13,7 @@ const Features = () => {
           </div>
           <div className="grid lg:gap-8 lg:grid-cols-2 lg:items-center">
             <div>
-              <h3 className="text-2xl font-bold tracki sm:text-3xl dark:text-gray-50">
-                Ad vix debet docendi
-              </h3>
-              <p className="mt-3 text-lg dark:text-gray-400">
-                Ne dicta praesent ocurreret has, diam theophrastus at pro. Eos
-                etiam regione ut, persius eripuit quo id. Sit te euismod
-                tacimates.
-              </p>
+              
               <div className="mt-12 space-y-12">
                 <div className="flex">
                   <div className="flex-shrink-0">
@@ -43,12 +36,10 @@ const Features = () => {
                   </div>
                   <div className="ml-4">
                     <h4 className="text-lg font-medium leadi dark:text-gray-50">
-                      Per ei quaeque sensibus
+                      Email Alert
                     </h4>
                     <p className="mt-2 dark:text-gray-400">
-                      Ex usu illum iudico molestie. Pro ne agam facete
-                      mediocritatem, ridens labore facete mea ei. Pro id
-                      apeirian dignissim.
+                    An alert will be sent to your email a few days before the subscription renewal date
                     </p>
                   </div>
                 </div>
@@ -73,12 +64,10 @@ const Features = () => {
                   </div>
                   <div className="ml-4">
                     <h4 className="text-lg font-medium leadi dark:text-gray-50">
-                      Cu imperdiet posidonium sed
+                    Allow different subscriptions
                     </h4>
                     <p className="mt-2 dark:text-gray-400">
-                      Amet utinam aliquando ut mea, malis admodum ocurreret nec
-                      et, elit tibique cu nec. Nec ex maluisset inciderint, ex
-                      quis.
+                    We do not oblige you to track your subscription to specific services. You have the option to add the service provider you want
                     </p>
                   </div>
                 </div>
@@ -103,12 +92,10 @@ const Features = () => {
                   </div>
                   <div className="ml-4">
                     <h4 className="text-lg font-medium leadi dark:text-gray-50">
-                      Nulla omittam sadipscing mel ne
+                    Calendar
                     </h4>
                     <p className="mt-2 dark:text-gray-400">
-                      At sed possim oporteat probatus, justo graece ne nec,
-                      minim commodo legimus ut vix. Ut eos iudico quando soleat,
-                      nam modus.
+                    With just one glance at the calendar, you can see when your subscriptions are renewing
                     </p>
                   </div>
                 </div>
@@ -125,14 +112,6 @@ const Features = () => {
           <div>
             <div className="grid lg:gap-8 lg:grid-cols-2 lg:items-center">
               <div className="lg:col-start-2">
-                <h3 className="text-2xl font-bold tracki sm:text-3xl dark:text-gray-50">
-                  Eam nibh gloriatur ex
-                </h3>
-                <p className="mt-3 text-lg dark:text-gray-400">
-                  Per odio fabellas consulatu cu. Utroque detracto mel ea, quo
-                  te latine theophrastus. Ea his tale nibh dissentias, mei
-                  exerci tamquam euripidis cu.
-                </p>
                 <div className="mt-12 space-y-12">
                   <div className="flex">
                     <div className="flex-shrink-0">
@@ -155,12 +134,10 @@ const Features = () => {
                     </div>
                     <div className="ml-4">
                       <h4 className="text-lg font-medium leadi dark:text-gray-50">
-                        Cibo augue offendit has ad
+                      Categories
                       </h4>
                       <p className="mt-2 dark:text-gray-400">
-                        An per velit appellantur, ut utinam minimum nominavi
-                        sit, odio nostro habemus ne nec. Ne sonet regione
-                        contentiones est.
+                      In the paid service you can organize and categorize your subscriptions the way you want for easy access
                       </p>
                     </div>
                   </div>
@@ -185,43 +162,19 @@ const Features = () => {
                     </div>
                     <div className="ml-4">
                       <h4 className="text-lg font-medium leadi dark:text-gray-50">
-                        At eum ferri luptatum lobortis
+                        SOON
                       </h4>
                       <p className="mt-2 dark:text-gray-400">
-                        Te per quidam maiorum ocurreret, etiam delicatissimi usu
-                        ad. Ne has quod periculis. Te sit primis iisque
-                        efficiantur.
+                      We will provide the option of SMS alerts
                       </p>
                     </div>
                   </div>
                   <div className="flex">
                     <div className="flex-shrink-0">
-                      <div className="flex items-center justify-center w-12 h-12 rounded-md dark:bg-violet-400 dark:text-gray-900">
-                        <svg
-                          xmlns="http://www.w3.org/2000/svg"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                          className="w-7 h-7"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M5 13l4 4L19 7"
-                          ></path>
-                        </svg>
-                      </div>
+                     
                     </div>
                     <div className="ml-4">
-                      <h4 className="text-lg font-medium leadi dark:text-gray-50">
-                        Dicunt verterem evertitur eu sea
-                      </h4>
-                      <p className="mt-2 dark:text-gray-400">
-                        Audire principes rationibus eam an, autem nominavi
-                        luptatum per te. Sumo fabulas vim eu, sonet saperet
-                        eleifend ut vix.
-                      </p>
+ 
                     </div>
                   </div>
                 </div>
