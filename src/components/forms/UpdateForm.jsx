@@ -1,12 +1,13 @@
+
+import { useState } from "react";
 import { FaVrCardboard } from "react-icons/fa";
 import { BsCalendar2DateFill } from "react-icons/bs";
 import { MdPriceChange } from "react-icons/md";
-import { useState } from "react";
 import axios from "axios";
 import SubscriptionInputField from "../SubscriptionInputFields";
-
-const SubscriptionForm = () => {
-
+import propTypes  from "prop-types";
+const UpdatForm = (props) => {
+    
   const [cycle, setCycle] = useState('monthly')
   const [subscription, setSubscription] = useState({
     providerName: "",
@@ -19,7 +20,7 @@ const SubscriptionForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await axios.post("http://localhost:8800/api/post/add", {...subscription, cycle},{
+    await axios.put(`http://localhost:8800/api/post//updateSub/:${props.id}`, {...subscription, cycle},{
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -139,5 +140,7 @@ const SubscriptionForm = () => {
 };
 
 
-
-export default SubscriptionForm;
+ UpdatForm.propTypes = {
+    id : propTypes.string
+ };
+export default UpdatForm;

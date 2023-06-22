@@ -20,7 +20,7 @@ const RegisterForm = () => {
     navigate("/auth/login");
   };
   return (
-    <div className="w-full max-w-md p-4 rounded-md shadow sm:p-8 dark:bg-gray-900 dark:text-gray-100 ">
+    <div className="w-full max-w-md p-4 rounded-md shadow sm:p-8 dark:text-gray-800 bg-gray-100">
       <h2 className="mb-3 text-3xl font-semibold text-center">Register</h2>
       <form className="space-y-8" onSubmit={handleSubmit}>
         <div className="space-y-4">
@@ -62,12 +62,12 @@ const RegisterForm = () => {
           />
         </div>
 
-        <p className="text-sm  dark:text-gray-400">
+        <div className="text-sm  dark:text-gray-400">
           Already have an account?
           <a href="/auth/login" className="focus:underline hover:underline">
             Sign in here
           </a>
-        </p>
+        </div>
         <FormButton text={"Register"} />
       </form>
     </div>
