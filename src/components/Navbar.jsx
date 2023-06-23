@@ -4,12 +4,10 @@ import { useState } from "react";
 import Auth from "../Decode";
 import Logo from "./Logo";
 import { NavLink, useNavigate } from "react-router-dom";
-// import UserAvatar from "./Avatar";
 
 const Navbar = () => {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 const navigate = useNavigate()
-
-
 
   const handleLogout = ()=>{
     localStorage.clear();
@@ -21,12 +19,9 @@ const navigate = useNavigate()
     { name: "Pricing", href: "#" },
     { name: "Company", href: "#" },
   ];
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
 
   
-
-
   return (
     <>
       <header className="absolute  inset-x-0 top-0 z-40">

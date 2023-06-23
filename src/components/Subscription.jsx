@@ -4,6 +4,7 @@ import propTypes from "prop-types";
 const Subscription = (props) => {
   return (
     <>
+    {console.log(props)}
       <div className="w-full h-20 bg-[#f9f7f3]">
         <div className="grid grid-cols-6 p-4">
           <div>

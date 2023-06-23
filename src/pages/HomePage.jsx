@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Modal from "../components/forms/Modal";
-import { BsFolder } from "react-icons/bs";
+import { BsFolder, BsFolderPlus } from "react-icons/bs";
 import { MdAddCircleOutline } from "react-icons/md";
 
 import Subscription from "../components/Subscription";
@@ -10,37 +10,16 @@ import AddFolder from "../components/AddFolder";
 import UpdatForm from "../components/forms/UpdateForm";
 const HomePage = () => {
   const [data, setData] = useState([]);
-
   const [subId, setSubId] = useState()
   const [showSubFormModal, setShowSubFormModal] = useState(false);
   const [showUbdateSubForm, setShowUbdateSubForm] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [showEntertainmentCate, setEntertainmentCate] = useState(false)
+  const [showSportCate, setSportCate] = useState(false)
   const [showDeleteSubAlert, setShowDeleteSubAlert] = useState(false);
 
 
 
-
-  // Data Of Entertainment Category 
-  const [entertainmentData, setEntertainmentData] = useState([])
-  const [sportData, setSportData] = useState([])
-
-
-  //
-  const [showModal, setShowModal] = useState(false);
-  const [showEntertainmentCate, setEntertainmentCate] = useState(false)
-  const [showSportCate, setSportCate] = useState(false)
-
-
-  const [createCategory, setCreateCategory] = useState("");
-
-  TO GET SUBSCRIPTION
-  const [subscription, setSubscription] = useState({
-    providerName: "",
-    value: "",
-    date: "",
-    category: "",
-    renewable: false,
-    cycle: "",
-  });
   
 
   const getSubs = async () => {
@@ -73,27 +52,7 @@ const HomePage = () => {
   }, []);
   
 
-  useEffect(() => {
-    axios.get("http://localhost:8800/api/user/category/allCategory", {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-    }).then((res) => {
-      setEntertainmentData(res.data)
-    })
-  },[])
-
-  useEffect(() => {
-    axios.get("http://localhost:8800/api/user/category/sportCategory", {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-    }).then((res) => {
-      setSportData(res.data)
-    })
-  },[])
-
-  const addCategory = async () => {
+ 
 
   const addCategory = async (e) => {
     e.preventDefault();
@@ -102,8 +61,6 @@ const HomePage = () => {
     });
   };
 
-  // const [showUbdataSubForm, setShowUbdataSubForm] = useState(false);
-  const [showDeleteSubAlert, setShowDeleteSubAlert] = useState(false);
 
   return (
     <>
@@ -186,7 +143,7 @@ const HomePage = () => {
 
             <ul> 
             {data.map((sub) => {
-                <li key={sub._id}>
+                return <li key={sub._id}>
                   <Subscription
                   value={sub.valuee}
                   provider={sub.providerName}
@@ -208,7 +165,7 @@ const HomePage = () => {
                   Entertainment Category
                 </p>
 
-                {
+                {/* {
                   entertainmentData.map((item) => {
                     return(
                       <ul key={item.id}>
@@ -217,16 +174,12 @@ const HomePage = () => {
                         <h1>{item.subscription_date}</h1>
                         <h1>{item.subscription_value}</h1>
                         <h1>{item.subscription_cycle}</h1>
-
                         <hr />       
-
                         </li>
-                      </ul>
-                      
+                      </ul>     
                     )
-                    
                   })
-                }
+                } */}
               </div>
             </div>
           </div>
@@ -241,7 +194,7 @@ const HomePage = () => {
                   Sport Category
                 </p>
 
-                {
+                {/* {
                   sportData.map((item) => {
                     return(
                       <ul key={item.id}>
@@ -257,7 +210,7 @@ const HomePage = () => {
                       </ul>                      
                     )                   
                   })
-                }
+                } */}
                 
               </div>
             </div>
@@ -278,7 +231,6 @@ const HomePage = () => {
                       id="username"
                       type="text"
                       placeholder="Folder Name"
-                      // onChange={(e) => setCreateCategory(e.target.value)}
                     />
                     <div className="absolute left-0 inset-y-0 flex items-center">
                       <BsFolderPlus className="h-7 w-7 ml-3 text-gray-400 p-1" />

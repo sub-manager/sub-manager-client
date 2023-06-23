@@ -3,12 +3,7 @@ import { useState } from "react";
 import Modal from "./forms/Modal";
 const AddFolder = () => {
     const [showModal, setShowModal] = useState(false);
-    // const addCategory = async (e) => {
-    //     e.preventDefault();
-    //     await axios.post("http//:localhost:8800/api/post/add", {
-    //       // ...subscription,
-    //     });
-    //   };
+    
   return (
     <>
               <div className="bg-[#f9f7f3] w-full h-14 border-black ">
@@ -42,7 +37,6 @@ const AddFolder = () => {
                       id="username"
                       type="text"
                       placeholder="Folder Name"
-                      // onChange={(e) => setCreateCategory(e.target.value)}
                     />
                     <div className="absolute left-0 inset-y-0 flex items-center">
                       <BsFolderPlus className="h-7 w-7 ml-3 text-gray-400 p-1" />
@@ -51,7 +45,6 @@ const AddFolder = () => {
 
                   <div className="flex items-center justify-center mt-8">
                     <button
-                    //   onClick={addCategory}
                       className="text-white py-2 px-4 uppercase rounded bg-[#5e9ba1] hover:bg-black shadow hover:shadow-lg font-medium transition transform hover:-translate-y-0.5"
                     >
                       New Folder
